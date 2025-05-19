@@ -1,0 +1,29 @@
+services:
+  api:
+    image: docker.jala.pro/docker-training/backend:lauramontano
+    container_name: backend
+    networks:
+      - project-net
+    volumes:
+      - backend-data:/data
+    restart: unless-stopped
+
+  fe:
+    image: docker.jala.pro/docker-training/frontend:lauramontano
+    container_name: frontend
+    networks:
+      - project-net
+    ports:
+      - "8080:80"
+    volumes:
+      - frontend-data:/usr/share/nginx/html
+    restart: unless-stopped
+
+networks:
+  project-net:
+    driver: bridge
+
+volumes:
+  backend-data:
+  frontend-data:
+    
