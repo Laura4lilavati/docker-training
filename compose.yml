@@ -4,6 +4,8 @@ services:
     container_name: backend
     networks:
       - project-net
+    ports:
+      - "5000:5000"
     volumes:
       - backend-data:/data
     restart: unless-stopped
@@ -26,4 +28,3 @@ networks:
 volumes:
   backend-data:
   frontend-data:
-    
