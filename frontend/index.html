@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Homework 3</title>
+    </head>
+    <body>
+        <h1>Container info</h1>
+        <div id="info"></div>
+        <script>
+            fetch('http://backend:5000/info')
+            .then(response => response.json())
+                .then(data => {
+                    document.getElementById('info').innerHTML =
+                        `<p>Hostname: ${data.hostname}</p><p>IP: ${data.ip_address}</p>`;
+                })
+                .catch(err => {
+                    document.getElementById('info').innerHTML = 'Error fetching info' + err.message;
+                });
+        </script>
+    </body>
+</html>
